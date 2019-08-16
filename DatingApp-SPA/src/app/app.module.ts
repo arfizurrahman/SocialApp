@@ -21,6 +21,8 @@ import { AlertifyService } from './services/alertify.service';
 import { UserService } from './services/user.service';
 import { AuthGuard } from './guards/auth.guard';
 import { ErrorInterceptorProvider } from './services/error.interceptor';
+import { MemberDetailsResolver } from './resolvers/member-details.resolver';
+import { MemberListResolver } from './resolvers/member-list.resolver';
 
 
 
@@ -61,7 +63,9 @@ export function tokenGetter() {
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
-      UserService
+      UserService,
+      MemberDetailsResolver,
+      MemberListResolver
    ],
    bootstrap: [
       AppComponent
