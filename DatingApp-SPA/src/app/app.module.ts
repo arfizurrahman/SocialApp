@@ -26,6 +26,7 @@ import { ErrorInterceptorProvider } from './services/error.interceptor';
 import { MemberDetailsResolver } from './resolvers/member-details.resolver';
 import { MemberListResolver } from './resolvers/member-list.resolver';
 import { MemberEditResolver } from './resolvers/member-edit.resolver';
+import { PreventUnsavedChangesGuard } from './guards/prevent-unsaved-changes.guard';
 
 
 
@@ -68,6 +69,7 @@ export function tokenGetter() {
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
+      PreventUnsavedChangesGuard,
       UserService,
       MemberDetailsResolver,
       MemberListResolver,
