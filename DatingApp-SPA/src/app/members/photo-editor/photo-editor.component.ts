@@ -1,7 +1,7 @@
 import { environment } from './../../../environments/environment';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FileUploader  } from 'ng2-file-upload';
-import { Photo } from 'src/app/models/Photo';
+import { Photo } from 'src/app/models/photo';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { AlertifyService } from 'src/app/services/alertify.service';
