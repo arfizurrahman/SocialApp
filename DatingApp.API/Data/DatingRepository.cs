@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -45,7 +46,16 @@ namespace DatingApp.API.Data
 
         public async Task<PagedList<User>> GetUsers(UserParams userParams)
         {
-            var users = _context.Users.Include(u => u.Photos);
+            var users = _context.Users.Include(u => u.Photos).AsQueryable();
+
+            users = users.Where(u => u.Id != userParams.UserId && u.Gender == userParams.Gender);
+
+            if(userParams.MinAge != 18 || userParams.MaxAge != 99){
+                var minDob = DateTime.Now.AddYears(-userParams.MaxAge - 1);
+                var maxDob = DateTime.Now.AddYears(-userParams.MinAge);
+                
+                users = users.Where(u => u.DateOfBirth >= minDob && u.DateOfBirth <= maxDob);
+            }
             return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }
 
