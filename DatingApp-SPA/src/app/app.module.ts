@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BsDropdownModule, TabsModule, BsDatepickerModule, PaginationModule, ButtonsModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule, BsDatepickerModule, PaginationModule, ButtonsModule, CollapseModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NgxGalleryModule } from 'ngx-gallery';
@@ -30,6 +30,7 @@ import { MemberDetailsResolver } from './resolvers/member-details.resolver';
 import { MemberListResolver } from './resolvers/member-list.resolver';
 import { MemberEditResolver } from './resolvers/member-edit.resolver';
 import { PreventUnsavedChangesGuard } from './guards/prevent-unsaved-changes.guard';
+import { ListResolver } from './resolvers/list.resolver';
 
 
 
@@ -65,6 +66,7 @@ export function tokenGetter() {
       ButtonsModule,
       FileUploadModule,
       ReactiveFormsModule,
+      CollapseModule.forRoot(),
       TabsModule.forRoot(),
       PaginationModule.forRoot(),
       JwtModule.forRoot({
@@ -84,7 +86,8 @@ export function tokenGetter() {
       UserService,
       MemberDetailsResolver,
       MemberListResolver,
-      MemberEditResolver
+      MemberEditResolver,
+      ListResolver
    ],
    bootstrap: [
       AppComponent
