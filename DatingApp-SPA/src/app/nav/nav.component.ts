@@ -13,6 +13,7 @@ export class NavComponent implements OnInit {
   model: any = {};
   photoUrl: string;
   isCollapsed = true;
+  navbarOpen = false;
 
   constructor(public authService: AuthService, private alertify: AlertifyService, private router: Router) { }
 
@@ -41,5 +42,9 @@ export class NavComponent implements OnInit {
     this.authService.currentUser = null;
     this.alertify.message('Logged out');
     this.router.navigate(['/home']);
+  }
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
   }
 }
