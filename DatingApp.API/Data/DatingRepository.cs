@@ -119,7 +119,7 @@ namespace DatingApp.API.Data
                 .ThenInclude(m => m.Photos)
                 .Include(m => m.Recipient)
                 .ThenInclude(m => m.Photos)
-                .Where(m => m.RecipientId == userId && m.RecipientDeleted == false && m.SenderId == recipientId
+                .Where(m => m.RecipientId == userId && m.RecipientDelete == false && m.SenderId == recipientId
                     || m.SenderId == userId && m.SenderDeleted == false && m.RecipientId == recipientId)
                 .OrderBy(m => m.MessageSent)
                 .ToListAsync();
@@ -139,7 +139,7 @@ namespace DatingApp.API.Data
             switch(messageParams.MessageContainer){
                 case "Inbox":
                     messages = messages.Where(m => m.RecipientId == messageParams.UserId 
-                    && m.RecipientDeleted == false);
+                    && m.RecipientDelete == false);
                     break;
                 case "Outbox":
                     messages = messages.Where(m => m.SenderId == messageParams.UserId 
@@ -147,12 +147,12 @@ namespace DatingApp.API.Data
                     break;
                 default:
                     messages = messages.Where(m => m.RecipientId == messageParams.UserId 
-                    && m.RecipientDeleted == false && m.IsRead == false);
+                    && m.RecipientDelete == false && m.IsRead == false);
                     break;
                     
             }
 
-            messages  = messages.OrderBy(m => m.MessageSent);
+            messages  = messages.OrderByDescending(m => m.MessageSent);
 
             return await PagedList<Message>.CreateAsync(messages, messageParams.PageNumber, messageParams.PageSize);
         }
