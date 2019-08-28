@@ -33,6 +33,7 @@ import { PreventUnsavedChangesGuard } from './guards/prevent-unsaved-changes.gua
 import { ListResolver } from './resolvers/list.resolver';
 import { MessagesResolver } from './resolvers/messages.resolver';
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 
 
 
@@ -56,6 +57,7 @@ export function tokenGetter() {
       PhotoEditorComponent,
       TimeAgoPipe,
       MemberMessagesComponent,
+      AdminPanelComponent,
 
    ],
    imports: [
