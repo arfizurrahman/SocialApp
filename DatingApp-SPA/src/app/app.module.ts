@@ -34,6 +34,7 @@ import { ListResolver } from './resolvers/list.resolver';
 import { MessagesResolver } from './resolvers/messages.resolver';
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { HasRoleDirective } from './directives/hasRole.directive';
 
 
 
@@ -58,7 +59,7 @@ export function tokenGetter() {
       TimeAgoPipe,
       MemberMessagesComponent,
       AdminPanelComponent,
-
+      HasRoleDirective
    ],
    imports: [
       BrowserModule,
